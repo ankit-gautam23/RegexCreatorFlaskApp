@@ -21,7 +21,7 @@ def specialCharReg(s):
     if ch == "/": 
         return "((\s*" + w_list[0] + "(\s*|" + ch + "|.)" + w_list[1] + "\s*)|\s*"+ w_list[0] + "\s*|\s*" + w_list[1]+"\s*)" 
 
-def cleanData(raw_text): 
+def filterData(raw_text): 
     raw_text = raw_text.upper() 
     regex_clean_html = re.compile('<.*?>') 
     cleantext = re.sub(regex_clean_html,' ',raw_text) 
@@ -31,7 +31,7 @@ def cleanData(raw_text):
     return cleantext 
 
 def createRegex(raw_text): 
-    ini_str = cleanData(raw_text) 
+    ini_str = filterData(raw_text) 
     ll = ini_str.split(" ") 
     country_regex = "\w{2}" 
     currency_regex = "\w{3}" 
